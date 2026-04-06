@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Persist embeds conversation history directly into your PDF. Upload it again on Claude or ChatGPT and pick up exactly where you left off — no accounts, no cloud.">
+  <meta property="og:title" content="Persist — Your PDFs Now Have Memory">
+  <meta property="og:description" content="Persist conversation history across AI sessions. History lives inside your PDF.">
+  <meta property="og:type" content="website">
+  <title>Persist — Your PDFs Now Have Memory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="landing/styles.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="./" class="nav-logo" aria-label="Persist home">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="4" y="3" width="16" height="18" rx="2.5" stroke="#7cd0ff" stroke-width="1.75"/>
+          <path d="M8 9h8M8 12.5h8M8 16h5" stroke="#7cd0ff" stroke-width="1.65" stroke-linecap="round"/>
+          <circle cx="17" cy="17" r="2" fill="#7cd0ff"/>
+        </svg>
+        <span>Persist</span>
+      </a>
+      <div class="nav-links">
+        <a href="#features" class="nav-link">Features</a>
+        <a href="#pricing" class="nav-link">Pricing</a>
+        <a href="https://github.com/persist-extension/persist" class="nav-link" target="_blank" rel="noopener">GitHub</a>
+        <a href="#install" class="btn btn-primary btn-sm">Install Free</a>
+      </div>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-mobile" id="nav-mobile">
+      <a href="#features" class="nav-link">Features</a>
+      <a href="#pricing" class="nav-link">Pricing</a>
+      <a href="https://github.com/persist-extension/persist" class="nav-link" target="_blank" rel="noopener">GitHub</a>
+      <a href="#install" class="btn btn-primary">Install Free</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-bg-glow" aria-hidden="true"></div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          Chrome extension · Free &amp; open source
+        </div>
+        <h1 class="hero-heading">
+          Your PDFs<br>
+          <span class="gradient-text">Now Have Memory</span>
+        </h1>
+        <p class="hero-subheading">
+          Persist embeds conversation history directly into your PDF.<br>
+          Upload it again and pick up <em>exactly</em> where you left off —<br>
+          no accounts, no cloud, no friction.
+        </p>
+        <div class="hero-ctas">
+          <a href="#install" class="btn btn-primary btn-lg" id="hero-install-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M12 4v12M8 12l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Install for Chrome — Free
+          </a>
+          <a href="#demo" class="btn btn-ghost btn-lg">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+              <path d="M10 8l6 4-6 4V8z" fill="currentColor"/>
+            </svg>
+            See how it works
+          </a>
+        </div>
+        <p class="hero-note">Works with Claude, ChatGPT · No sign-up required</p>
+      </div>
+
+      <!-- ANIMATED DEMO -->
+      <div class="demo-window" id="demo" aria-label="Extension demo animation">
+        <div class="demo-chrome">
+          <div class="demo-chrome-dots">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="demo-chrome-url">claude.ai/chat</div>
+        </div>
+        <div class="demo-body">
+          <!-- Left: Chat UI -->
+          <div class="demo-chat">
+            <div class="demo-chat-messages" id="demo-messages">
+              <!-- Populated by JS -->
+            </div>
+            <div class="demo-chat-input-area">
+              <div class="demo-attachment" id="demo-attachment">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" stroke="#9ca3af" stroke-width="2" stroke-linejoin="round"/>
+                  <path d="M14 2v6h6" stroke="#9ca3af" stroke-width="2" stroke-linejoin="round"/>
+                </svg>
+                <span id="demo-attachment-name">architecture.pdf</span>
+              </div>
+              <div class="demo-chat-input" id="demo-input"></div>
+              <button class="demo-send-btn" id="demo-send-btn" aria-label="Send">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                  <path d="M5 12h14M13 6l6 6-6 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Right: Persist Badge -->
+          <div class="demo-badge-area">
+            <div class="demo-persist-badge" id="demo-badge">
+              <div class="demo-badge-header">
+                <span class="demo-badge-dot" id="demo-badge-dot"></span>
+                <span class="demo-badge-label" id="demo-badge-label">Persist</span>
+              </div>
+              <div class="demo-badge-status" id="demo-badge-status">Watching for PDF...</div>
+              <div class="demo-badge-stats" id="demo-badge-stats"></div>
+              <button class="demo-save-btn" id="demo-save-btn" style="display:none">Save Memory</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phase label -->
+        <div class="demo-phase-bar">
+          <div class="demo-phase-dots" id="demo-phase-dots">
+            <span class="demo-phase-dot active" data-phase="0"></span>
+            <span class="demo-phase-dot" data-phase="1"></span>
+            <span class="demo-phase-dot" data-phase="2"></span>
+            <span class="demo-phase-dot" data-phase="3"></span>
+            <span class="demo-phase-dot" data-phase="4"></span>
+          </div>
+          <span class="demo-phase-label" id="demo-phase-label">Upload PDF</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-label">Features</div>
+      <h2 class="section-heading">Everything you need.<br>Nothing you don't.</h2>
+      <p class="section-subheading">Persist does one thing and does it perfectly: keeps your AI conversations alive across sessions.</p>
+
+      <div class="features-grid">
+
+        <div class="feature-card">
+          <div class="feature-icon feature-icon-purple">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">Automatic Memory</h3>
+          <p class="feature-desc">Upload a PDF — Persist instantly detects any prior history and injects it as context before your first message. No setup, no configuration.</p>
+          <ul class="feature-list">
+            <li>Detects PDFs in all upload flows</li>
+            <li>Parses and formats history automatically</li>
+            <li>Works on first message of every session</li>
+          </ul>
+        </div>
+
+        <div class="feature-card feature-card-highlight">
+          <div class="feature-card-popular">Most loved</div>
+          <div class="feature-icon feature-icon-green">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2"/>
+              <path d="M8 21h8M12 17v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">Cross-Platform</h3>
+          <p class="feature-desc">One PDF, any AI. Use it on Claude today, switch to ChatGPT tomorrow. Persist speaks every platform's language — no re-uploading context manually.</p>
+          <ul class="feature-list">
+            <li>Claude.ai — full support</li>
+            <li>ChatGPT — full support</li>
+            <li>More platforms coming</li>
+          </ul>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon feature-icon-blue">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">Privacy First</h3>
+          <p class="feature-desc">Your conversation history never touches our servers. It lives in your PDF's metadata — encrypted, portable, and 100% under your control.</p>
+          <ul class="feature-list">
+            <li>Zero server-side storage</li>
+            <li>No account required</li>
+            <li>History travels with your PDF</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="container">
+      <div class="section-label">How it works</div>
+      <h2 class="section-heading">Four steps.<br>Then it runs itself.</h2>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">01</div>
+          <div class="step-content">
+            <h3 class="step-title">Install Persist</h3>
+            <p class="step-desc">One click from the Chrome Web Store. No permissions you didn't expect — Persist only activates on Claude.ai and ChatGPT.</p>
+          </div>
+        </div>
+        <div class="step-connector" aria-hidden="true"></div>
+        <div class="step">
+          <div class="step-number">02</div>
+          <div class="step-content">
+            <h3 class="step-title">Upload your PDF</h3>
+            <p class="step-desc">Drag it into Claude or ChatGPT like you normally would. If the PDF has prior history, Persist loads it and injects context automatically.</p>
+          </div>
+        </div>
+        <div class="step-connector" aria-hidden="true"></div>
+        <div class="step">
+          <div class="step-number">03</div>
+          <div class="step-content">
+            <h3 class="step-title">Chat normally</h3>
+            <p class="step-desc">Have your conversation. Persist silently captures every message in the background — you'll see the count update in the badge.</p>
+          </div>
+        </div>
+        <div class="step-connector" aria-hidden="true"></div>
+        <div class="step">
+          <div class="step-number">04</div>
+          <div class="step-content">
+            <h3 class="step-title">Save memory</h3>
+            <p class="step-desc">Click "Save Memory" in the Persist badge. Your PDF downloads with the conversation embedded. Upload it again next time — it remembers.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing" id="pricing">
+    <div class="container">
+      <div class="section-label">Pricing</div>
+      <h2 class="section-heading">Free extension. Your API keys.</h2>
+      <p class="section-subheading">Persist charges you nothing. Optional summarization uses providers you already pay — Anthropic, OpenAI, xAI, OpenRouter, or any OpenAI-compatible endpoint.</p>
+
+      <div class="pricing-layout">
+        <div class="pricing-card pricing-card-primary">
+          <div class="pricing-tier">Everything in the extension</div>
+          <div class="pricing-price">
+            <span class="pricing-amount">$0</span>
+            <span class="pricing-period">to Persist</span>
+          </div>
+          <p class="pricing-desc">MIT-licensed, no account, no telemetry. History lives in your PDF metadata and local browser storage.</p>
+          <a href="#install" class="btn btn-primary btn-full">Install from source</a>
+          <ul class="pricing-features">
+            <li class="feat-yes">Capture &amp; inject context on supported AI chats</li>
+            <li class="feat-yes">Save memory to PDF — no enforced monthly cap</li>
+            <li class="feat-yes">Local truncation when history exceeds 50KB</li>
+            <li class="feat-yes">Auto-save &amp; invisible mode (toggle in popup)</li>
+            <li class="feat-yes">Optional smart compression via your API keys</li>
+          </ul>
+        </div>
+
+        <div class="pricing-card pricing-card-secondary">
+          <div class="pricing-tier">If you enable summarization</div>
+          <p class="pricing-desc pricing-desc-tight">When embedded history exceeds 50KB, you can add a key in <strong>Smart Compression</strong> so older messages are summarized instead of only truncated. You pay the <em>model provider</em> under their pricing — not Persist.</p>
+          <ul class="pricing-features pricing-features-compact">
+            <li class="feat-yes">Pick preset providers or a custom base URL + model</li>
+            <li class="feat-yes">Input is capped per request to keep costs predictable</li>
+            <li class="feat-yes">Chrome may ask permission once for custom API hosts</li>
+          </ul>
+          <a href="../privacy.md" class="btn btn-outline btn-full">Read privacy policy</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="section-label">FAQ</div>
+      <h2 class="section-heading">Common questions.</h2>
+      <div class="faq-list">
+
+        <details class="faq-item">
+          <summary class="faq-question">How does Persist store conversation history?</summary>
+          <div class="faq-answer">
+            <p>Persist writes conversation history to your PDF's metadata field — specifically the document info dictionary using a custom <code>PersistHistory</code> key. The data is base64-encoded JSON. Your original PDF content is never modified, only the metadata layer. The file size increase is proportional to the conversation length.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">What happens when the conversation gets too long?</summary>
+          <div class="faq-answer">
+            <p>Metadata is capped around 50KB. Without an API key, Persist truncates older messages locally and adds a notice. With an optional key (Smart Compression), it can summarize older turns using the provider and model you configure, keeping a fixed number of recent messages verbatim.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">Is my data private? Does anything go to your servers?</summary>
+          <div class="faq-answer">
+            <p>Persist does not run a backend for your chats. History is stored in the PDF and in local extension storage. If you enable summarization, message text is sent only to the API endpoint you choose, using your key — not to Persist.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">Which AI platforms does Persist support?</summary>
+          <div class="faq-answer">
+            <p>Persist currently supports <strong>Claude.ai</strong> and <strong>ChatGPT</strong>. Since history is stored in the PDF itself, you can use a PDF on Claude today and open it on ChatGPT tomorrow — the history travels with the file. Additional platforms are on the roadmap.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">Can I share a PDF with embedded history?</summary>
+          <div class="faq-answer">
+            <p>Yes. The file is a normal PDF; metadata is readable by tools that read PDF info. Recipients can continue the thread in any supported chat with Persist installed. Treat shared PDFs like any sensitive document.</p>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTALL CTA -->
+  <section class="cta-section" id="install">
+    <div class="container">
+      <div class="cta-card">
+        <div class="cta-glow" aria-hidden="true"></div>
+        <h2 class="cta-heading">Ready to give your PDFs memory?</h2>
+        <p class="cta-desc">Clone the repo, run <code class="cta-code">./setup.sh</code>, load unpacked in Chrome. No fee to Persist — ever.</p>
+        <div class="cta-actions">
+          <a href="https://chrome.google.com/webstore" class="btn btn-primary btn-xl" target="_blank" rel="noopener">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M12 4v12M8 12l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Install for Chrome — Free
+          </a>
+          <a href="https://github.com/persist-extension/persist" class="btn btn-ghost btn-xl" target="_blank" rel="noopener">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            View on GitHub
+          </a>
+        </div>
+        <p class="cta-note">Chrome 88+ required · MIT licensed · Open source</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="./" class="footer-logo" aria-label="Persist home">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="4" y="3" width="16" height="18" rx="2.5" stroke="#7cd0ff" stroke-width="1.75"/>
+              <path d="M8 9h8M8 12.5h8M8 16h5" stroke="#7cd0ff" stroke-width="1.65" stroke-linecap="round"/>
+              <circle cx="17" cy="17" r="2" fill="#7cd0ff"/>
+            </svg>
+            <span>Persist</span>
+          </a>
+          <p class="footer-tagline">Your PDFs now have memory.</p>
+        </div>
+        <nav class="footer-links" aria-label="Footer navigation">
+          <div class="footer-link-group">
+            <div class="footer-link-title">Product</div>
+            <a href="#features" class="footer-link">Features</a>
+            <a href="#pricing" class="footer-link">Pricing</a>
+            <a href="#how-it-works" class="footer-link">How it works</a>
+            <a href="#faq" class="footer-link">FAQ</a>
+          </div>
+          <div class="footer-link-group">
+            <div class="footer-link-title">Developers</div>
+            <a href="https://github.com/persist-extension/persist" class="footer-link" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://github.com/persist-extension/persist#readme" class="footer-link" target="_blank" rel="noopener">Documentation</a>
+            <a href="https://github.com/persist-extension/persist/releases" class="footer-link" target="_blank" rel="noopener">Changelog</a>
+          </div>
+          <div class="footer-link-group">
+            <div class="footer-link-title">Legal</div>
+            <a href="../privacy.md" class="footer-link">Privacy Policy</a>
+            <a href="https://usepersist.com/terms" class="footer-link" target="_blank" rel="noopener">Terms of Service</a>
+          </div>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2026 Persist. Open source under MIT License.</p>
+        <p class="footer-built">Built for developers who use AI seriously.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="landing/script.js"></script>
+</body>
+</html>
