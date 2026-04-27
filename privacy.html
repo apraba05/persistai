@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Privacy Policy for Persist — AI Memory Chrome Extension. All data stored locally. No servers, no accounts.">
+  <meta property="og:title" content="Privacy Policy — Persist">
+  <meta property="og:type" content="website">
+  <title>Privacy Policy — Persist AI Memory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="landing/styles.css">
+  <style>
+    .prose-page {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 80px 24px 120px;
+    }
+    .prose-page h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 8px;
+      color: #141210;
+    }
+    .prose-page .prose-meta {
+      font-size: 14px;
+      color: #9c9890;
+      margin-bottom: 56px;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .prose-page h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #141210;
+      margin: 48px 0 12px;
+    }
+    .prose-page h3 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #141210;
+      margin: 28px 0 8px;
+    }
+    .prose-page p, .prose-page li {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      line-height: 1.75;
+      color: #3d3a36;
+      margin-bottom: 12px;
+    }
+    .prose-page ul {
+      padding-left: 20px;
+      margin-bottom: 12px;
+    }
+    .prose-page li { margin-bottom: 6px; }
+    .prose-page table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      margin: 16px 0 24px;
+    }
+    .prose-page th {
+      text-align: left;
+      font-weight: 600;
+      color: #141210;
+      border-bottom: 1.5px solid #e8e5e0;
+      padding: 8px 12px 8px 0;
+    }
+    .prose-page td {
+      color: #3d3a36;
+      border-bottom: 1px solid #f0ede8;
+      padding: 8px 12px 8px 0;
+      vertical-align: top;
+    }
+    .prose-page .callout {
+      background: #f7f5f2;
+      border-left: 3px solid #141210;
+      border-radius: 0 6px 6px 0;
+      padding: 14px 18px;
+      margin: 20px 0;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      color: #3d3a36;
+      line-height: 1.6;
+    }
+    .prose-page hr {
+      border: none;
+      border-top: 1px solid #e8e5e0;
+      margin: 48px 0;
+    }
+    .prose-page a { color: #141210; text-decoration: underline; }
+    .prose-page a:hover { opacity: 0.65; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="./" class="nav-logo" aria-label="Persist home">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="4" y="3" width="16" height="18" rx="2.5" stroke="#141210" stroke-width="1.75"/>
+          <path d="M8 9h8M8 12.5h8M8 16h5" stroke="#141210" stroke-width="1.65" stroke-linecap="round"/>
+          <circle cx="17" cy="17" r="2" fill="#141210"/>
+        </svg>
+        <span>Persist</span>
+      </a>
+      <div class="nav-links">
+        <a href="./#features" class="nav-link">Features</a>
+        <a href="./#install" class="btn btn-primary btn-sm">Install Free</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- CONTENT -->
+  <main class="prose-page">
+
+    <h1>Privacy Policy</h1>
+    <p class="prose-meta">Effective: January 1, 2026 &nbsp;·&nbsp; Last updated: April 26, 2026 &nbsp;·&nbsp; Version 2.0</p>
+
+    <div class="callout">
+      <strong>Short version:</strong> Everything stays on your device. Persist has no servers, no accounts, and makes no outbound network requests. Your conversation history is stored in your browser's local database (IndexedDB). The AI embedding model runs entirely in your browser — no data is sent anywhere for processing.
+    </div>
+
+    <h2>What Persist does</h2>
+    <p>Persist is a Chrome extension that automatically captures your conversations on supported AI chat platforms (Claude, ChatGPT, Gemini, Grok, Perplexity) and stores them locally in your browser. You can search past conversations by topic and inject prior context into any new chat — all without leaving your browser.</p>
+
+    <h2>Data we collect and store</h2>
+
+    <h3>1. Conversation history (IndexedDB)</h3>
+    <p>When you chat on a supported AI platform, Persist saves your conversations to IndexedDB — a local database built into your browser. This data never leaves your device.</p>
+    <p><strong>What is stored per conversation:</strong></p>
+    <ul>
+      <li>Platform name (e.g. "claude", "chatgpt")</li>
+      <li>Conversation URL and title</li>
+      <li>Messages: role (user or assistant), text content, and timestamp</li>
+      <li>A numeric vector embedding used for semantic search (generated locally)</li>
+      <li>Timestamps: created and last updated</li>
+    </ul>
+    <p><strong>Where it lives:</strong> In your browser's IndexedDB storage, scoped to the Persist extension. It is never uploaded, synced, or transmitted anywhere.</p>
+
+    <h3>2. Metadata index (chrome.storage.sync)</h3>
+    <p>Persist stores a lightweight index of conversation titles, platforms, and message counts in <code>chrome.storage.sync</code>. This index is used to display your conversation list quickly. Chrome may sync this index across your signed-in Chrome profiles via Google's infrastructure — the same way bookmarks and settings sync. Only metadata (titles, timestamps, message counts) is included. <strong>Message content is never in the sync index.</strong></p>
+
+    <h3>3. Extension settings (chrome.storage.local)</h3>
+    <p>Persist stores your preferences locally:</p>
+    <table>
+      <thead><tr><th>Setting</th><th>Purpose</th></tr></thead>
+      <tbody>
+        <tr><td>Auto-save toggle</td><td>Whether to save conversations automatically</td></tr>
+        <tr><td>Sidebar position (left/right)</td><td>UI preference</td></tr>
+        <tr><td>Incognito mode toggle</td><td>Disable capture on incognito windows</td></tr>
+      </tbody>
+    </table>
+
+    <h3>4. Embedding model (local, cached)</h3>
+    <p>Persist uses the <code>all-MiniLM-L6-v2</code> model (~30 MB) to generate semantic embeddings for search. This model is bundled with the extension and runs entirely in your browser using ONNX Runtime WebAssembly. <strong>No text is sent to any external server for embedding. The model runs locally on your CPU.</strong></p>
+
+    <hr>
+
+    <h2>What Persist never does</h2>
+    <ul>
+      <li><strong>No outbound data transmission</strong> — Persist makes zero network requests. There is no Persist server. Your conversations are not uploaded, processed, or analyzed externally.</li>
+      <li><strong>No analytics or telemetry</strong> — No page views, events, session data, or usage metrics are tracked or reported anywhere.</li>
+      <li><strong>No account required</strong> — No email address, login, or account creation.</li>
+      <li><strong>No cross-site tracking</strong> — Persist does not track your browsing outside of the five supported AI platforms it is explicitly configured for.</li>
+      <li><strong>No advertising</strong> — Persist does not serve ads or share data with advertising networks.</li>
+      <li><strong>No error reporting</strong> — Errors appear only in your browser's DevTools console and are never sent to any service.</li>
+    </ul>
+
+    <hr>
+
+    <h2>Chrome permissions explained</h2>
+    <table>
+      <thead><tr><th>Permission</th><th>Why it is needed</th></tr></thead>
+      <tbody>
+        <tr><td><code>activeTab</code></td><td>Read the URL of your current tab to detect which AI platform you are on</td></tr>
+        <tr><td><code>tabs</code></td><td>Detect tab navigation and closing so conversations can be auto-saved</td></tr>
+        <tr><td><code>storage</code></td><td>Store conversations (IndexedDB), settings (local), and metadata index (sync)</td></tr>
+        <tr><td><code>alarms</code></td><td>Schedule background saves when a tab closes, even if the service worker is idle</td></tr>
+        <tr><td><code>contextMenus</code></td><td>Optional right-click menu items on supported pages</td></tr>
+        <tr><td>Host permissions for 8 AI platform URLs</td><td>Inject the content script that captures conversations on those specific sites only</td></tr>
+      </tbody>
+    </table>
+    <p>Persist does <strong>not</strong> use: <code>history</code>, <code>bookmarks</code>, <code>cookies</code>, <code>webRequest</code>, <code>identity</code>, <code>geolocation</code>, <code>notifications</code>, <code>clipboardRead</code>, <code>clipboardWrite</code>, <code>downloads</code>, or any broad host access beyond the eight AI platforms listed in the manifest.</p>
+
+    <hr>
+
+    <h2>Data retention and deletion</h2>
+    <h3>Delete all stored conversations</h3>
+    <p>Open the Persist popup → <strong>Clear All Data</strong>. This immediately removes all conversations from IndexedDB and the sync metadata index.</p>
+
+    <h3>Delete a single conversation</h3>
+    <p>Open the Persist sidebar → History tab → hover a conversation → click the delete icon.</p>
+
+    <h3>Uninstall completely</h3>
+    <p>Go to <code>chrome://extensions</code> → find Persist → click <strong>Remove</strong>. Chrome deletes all extension storage (IndexedDB, local, sync) when an extension is uninstalled.</p>
+
+    <p>Persist does not impose a retention period. Data remains until you delete it or uninstall the extension.</p>
+
+    <hr>
+
+    <h2>GDPR and privacy rights</h2>
+    <p>Because Persist operates no servers, all data is under your direct control at all times:</p>
+    <ul>
+      <li><strong>Right to access:</strong> All data is readable via the Persist sidebar or Chrome's DevTools (<code>chrome.storage</code> inspector).</li>
+      <li><strong>Right to erasure:</strong> Use "Clear All Data" in the popup, or uninstall the extension. There is no server-side data to request deletion of.</li>
+      <li><strong>Data portability:</strong> Use Export All (JSON) in the popup to download your full conversation history.</li>
+      <li><strong>No data transfers:</strong> Because no data leaves your device, no third-country data transfer questions apply.</li>
+    </ul>
+    <p>For privacy inquiries: <a href="mailto:privacy@usepersist.com">privacy@usepersist.com</a></p>
+
+    <hr>
+
+    <h2>Changes to this policy</h2>
+    <p>Material changes will be reflected in the <strong>Last updated</strong> date at the top of this page and noted in the extension's changelog. Continued use of Persist after a policy update constitutes acceptance of the updated terms.</p>
+
+    <hr>
+
+    <h2>Contact</h2>
+    <p>
+      Privacy questions: <a href="mailto:privacy@usepersist.com">privacy@usepersist.com</a><br>
+      Security: <a href="mailto:security@usepersist.com">security@usepersist.com</a><br>
+      General: <a href="mailto:hello@usepersist.com">hello@usepersist.com</a>
+    </p>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="./" class="footer-logo" aria-label="Persist home">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="4" y="3" width="16" height="18" rx="2.5" stroke="#9c9890" stroke-width="1.75"/>
+              <path d="M8 9h8M8 12.5h8M8 16h5" stroke="#9c9890" stroke-width="1.65" stroke-linecap="round"/>
+              <circle cx="17" cy="17" r="2" fill="#9c9890"/>
+            </svg>
+            <span>Persist</span>
+          </a>
+          <p class="footer-tagline">Your AI conversations, remembered.</p>
+        </div>
+        <nav class="footer-links" aria-label="Footer navigation">
+          <div class="footer-link-group">
+            <div class="footer-link-title">Product</div>
+            <a href="./#features" class="footer-link">Features</a>
+            <a href="./#install" class="footer-link">Install</a>
+          </div>
+          <div class="footer-link-group">
+            <div class="footer-link-title">Legal</div>
+            <a href="./privacy.html" class="footer-link">Privacy Policy</a>
+          </div>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2026 Persist. Open source under MIT License.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
